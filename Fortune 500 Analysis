@@ -58,7 +58,7 @@ VALUES
 
 -- Show what the database contain.
 SELECT *
-FROM fortune_companies
+FROM fortune_companies;
 
 -- How many different type of industries is listed?
 SELECT COUNT(DISTINCT industry)
@@ -89,10 +89,15 @@ WHERE industry='Healthcare';
 SELECT industry,ROUND(AVG(revenue),0) as avg_revenue_billions
 FROM fortune_companies
 GROUP BY industry
-HAVING avg_revenue_billions>=200
+HAVING avg_revenue_billions>=200;
 
 -- Which company in the Retail industry has the least revenue, and what's their revenue? 
 SELECT company_name, min(revenue)
 FROM fortune_companies
-WHERE industry = 'Retail'
+WHERE industry = 'Retail';
+
+-- Which company in the Technology industry has the most revenue, and what's their revenue?
+SELECT company_name,MAX(revenue)
+FROM fortune_companies
+WHERE industry = "Technology";
 
