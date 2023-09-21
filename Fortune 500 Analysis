@@ -101,3 +101,8 @@ SELECT company_name,MAX(revenue)
 FROM fortune_companies
 WHERE industry = "Technology";
 
+-- Show the companies that's only in the telecommunications and retail industry.
+SELECT *
+FROM fortune_companies
+WHERE industry IN('Telecommunications','Retail')
+ORDER BY industry;
