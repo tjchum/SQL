@@ -113,3 +113,15 @@ FROM fortune_companies
 WHERE employees >=100000
 AND employees <=1000000
 ORDER BY industry;
+
+-- What is the lowest and highest average employee tenure?
+SELECT MIN(avg_employee_tenure),MAX(avg_employee_tenure)
+FROM fortune_companies;
+
+-- Assign all the companies in the Technology industry as "Longest Been Here" and "Average Been Here" based on average employee tenture.
+SELECT company_name,
+CASE WHEN avg_employee_tenure >=5.5 THEN "Longest been here"
+ELSE "Average Been Here" END AS longevity_in_tech,
+ROUND(avg_employee_tenure,1)
+FROM fortune_companies
+WHERE industry = "Technology"
