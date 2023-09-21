@@ -106,3 +106,10 @@ SELECT *
 FROM fortune_companies
 WHERE industry IN('Telecommunications','Retail')
 ORDER BY industry;
+
+-- What companies have more than 100,000 employees but under 1,000,000
+SELECT *
+FROM fortune_companies
+WHERE employees >=100000
+AND employees <=1000000
+ORDER BY industry;
