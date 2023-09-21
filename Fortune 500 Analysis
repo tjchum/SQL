@@ -60,9 +60,17 @@ VALUES
 SELECT *
 FROM fortune_companies
 
--- Show the industries that have less than 5000 employees and which companies are they
-SELECT industry,company_name,employees
+-- How many different type of industries is listed?
+SELECT COUNT(DISTINCT industry)
+FROM fortune_companies;
+
+-- Show the companies that have less than 4000 employees and their industry
+SELECT company_name,industry,employees
 FROM fortune_companies
-WHERE employees<=5000
-ORDER BY employees asc;
+WHERE employees<=4000
+ORDER BY industry;
+
+
+
+
 
