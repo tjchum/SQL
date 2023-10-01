@@ -43,6 +43,38 @@ INSERT INTO songs (artist_id, title, release_year, views)
 INSERT INTO songs (artist_id, title, release_year, views) 
    VALUES (4, "Streets", 2020, 238);
 
+CREATE TABLE albums (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    artist_id INTEGER,
+    album_title TEXT,
+    release_year INTEGER
+);
+
+INSERT INTO albums (artist_id, album_title, release_year)
+    VALUES (1, "Chromatica", 2020);
+INSERT INTO albums (artist_id, album_title, release_year)
+    VALUES (1, "The Fame Monster", 2009);
+INSERT INTO albums (artist_id, album_title, release_year)
+    VALUES (1, "Joanne", 2016);
+INSERT INTO albums (artist_id, album_title, release_year)
+    VALUES (2, "Born To Die", 2012);
+INSERT INTO albums (artist_id, album_title, release_year)
+    VALUES (2, "Did You Know That There's A Tunnel Under Ocean Blvd", 2023);
+INSERT INTO albums (artist_id, album_title, release_year)
+    VALUES (2, "Honeymoon", 2015);
+INSERT INTO albums (artist_id, album_title, release_year)
+    VALUES (3, "Ctrl", 2017);
+INSERT INTO albums (artist_id, album_title, release_year)
+    VALUES (3, "SOS", 2023);
+INSERT INTO albums (artist_id, album_title, release_year)
+    VALUES (3, "", 2018);
+INSERT INTO albums (artist_id, album_title, release_year)
+    VALUES (4, "Scarlet", 2023);
+INSERT INTO albums (artist_id, album_title, release_year)
+    VALUES (4, "Planet Her", 2021);
+INSERT INTO albums (artist_id, album_title, release_year)
+    VALUES (4, "Hot Pink", 2019);
+
 -- Show the artists names
 SELECT * FROM artists;
 
