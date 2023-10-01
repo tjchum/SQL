@@ -1,13 +1,13 @@
 CREATE TABLE singers (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    stage_name TEXT,
-    real_name TEXT
+    name TEXT,
+    age INTEGER
 ); 
 
-INSERT INTO singers (stage_name, real_name) VALUES ("Lady Gaga", "Stefani Joanne Angelina Germanotta");
-INSERT INTO singers (stage_name, real_name) VALUES ("Lana Del Rey", "Elizabeth Woolridge Grant");
-INSERT INTO singers (stage_name, real_name) VALUES ("SZA", "Solána Imani Rowe");
-INSERT INTO singers (stage_name, real_name) VALUES ("Doja Cat", 
+INSERT INTO singers (name, age) VALUES ("Stefani Joanne Angelina Germanotta", 37);
+INSERT INTO singers (name, age) VALUES ("Elizabeth Woolridge Grant", 38);
+INSERT INTO singers (name, age) VALUES ("Solána Imani Rowe", 33);
+INSERT INTO singers (name, age) VALUES ("Amala Zandile Dlamini", 27);
 
 CREATE TABLE songs (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
@@ -17,15 +17,14 @@ CREATE TABLE songs (
     views NUMERIC
 ); 
 
-
 INSERT INTO songs (artist_id, title, release_year, views) 
    VALUES (1, "Rain On Me", 2020, 398);
 INSERT INTO songs (artist_id, title, release_year, views) 
    VALUES (1, "Just Dance", 2009, 423);
 INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (1, "Million Reasons", 2017, 318);
+   VALUES (1, "Million Reasons", 2016, 318);
 INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (2, "Summertime Sadness", 2013, 489);
+   VALUES (2, "Summertime Sadness", 2012, 489);
 INSERT INTO songs (artist_id, title, release_year, views) 
    VALUES (2, "Say Yes To Heaven", 2023, 21);
 INSERT INTO songs (artist_id, title, release_year, views) 
@@ -42,41 +41,37 @@ INSERT INTO songs (artist_id, title, release_year, views)
    VALUES (4, "Women", 2021, 129);
 INSERT INTO songs (artist_id, title, release_year, views) 
    VALUES (4, "Streets", 2020, 238);
-
+   
 CREATE TABLE albums (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    stage_name TEXT,
+    name TEXT,
     album_name TEXT,
     release_year INTEGER
 );
 
-INSERT INTO albums (stage_name, album_name, release_year)
+INSERT INTO albums (name, album_name, release_year)
     VALUES ("Lady Gaga", "Chromatica", 2020);
-INSERT INTO albums (stage_name, album_name, release_year)
+INSERT INTO albums (name, album_name, release_year)
     VALUES ("Lady Gaga", "The Fame Monster", 2009);
-INSERT INTO albums (stage_name, album_name, release_year)
+INSERT INTO albums (name, album_name, release_year)
     VALUES ("Lady Gaga", "Joanne", 2016);
-INSERT INTO albums (stage_name, album_name, release_year)
+INSERT INTO albums (name, album_name, release_year)
     VALUES ("Lana Del Rey", "Born To Die", 2012);
-INSERT INTO albums (stage_name, album_name, release_year)
+INSERT INTO albums (name, album_name, release_year)
     VALUES ("Lana Del Rey", "Did You Know That There's A Tunnel Under Ocean Blvd", 2023);
-INSERT INTO albums (stage_name, album_name, release_year)
+INSERT INTO albums (name, album_name, release_year)
     VALUES ("Lana Del Rey", "Honeymoon", 2015);
-INSERT INTO albums (stage_name, album_name, release_year)
+INSERT INTO albums (name, album_name, release_year)
     VALUES ("SZA", "Ctrl", 2017);
-INSERT INTO albums (stage_name, album_name, release_year)
+INSERT INTO albums (name, album_name, release_year)
     VALUES ("SZA", "SOS", 2023);
-INSERT INTO albums (stage_name, album_name, release_year)
+INSERT INTO albums (name, album_name, release_year)
     VALUES ("SZA", "", 2018);
-INSERT INTO albums (stage_name, album_name, release_year)
+INSERT INTO albums (name, album_name, release_year)
     VALUES ("Doja Cat", "Scarlet", 2023);
-INSERT INTO albums (stage_name, album_name, release_year)
+INSERT INTO albums (name, album_name, release_year)
     VALUES ("Doja Cat", "Planet Her", 2021);
-INSERT INTO albums (stage_name, album_name, release_year)
+INSERT INTO albums (name, album_name, release_year)
     VALUES ("Doja Cat", "Hot Pink", 2019);
-    
 
--- Show the artists names
-SELECT * FROM singers;
-
--- What songs did each artists sing?
+-- 
