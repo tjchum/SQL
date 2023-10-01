@@ -1,0 +1,52 @@
+CREATE TABLE artists (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    stage_name TEXT,
+    real_name TEXT
+); 
+
+INSERT INTO artists (stage_name, real_name) VALUES ("Lady Gaga", "Stefani Joanne Angelina Germanotta");
+INSERT INTO artists (stage_name, real_name) VALUES ("Lana Del Rey", "Elizabeth Woolridge Grant");
+INSERT INTO artists (stage_name, real_name) VALUES ("SZA", "Solána Imani Rowe");
+INSERT INTO artists (stage_name, real_name) VALUES ("Doja Cat", "Amala Zandile Dlamini");
+
+CREATE TABLE songs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    artist_id INTEGER,
+    title TEXT,
+    release_year INTEGER,
+    views NUMERIC
+); 
+
+
+INSERT INTO songs (artist_id, title, release_year, views) 
+   VALUES (1, "Rain On Me", 2020, 398);
+INSERT INTO songs (artist_id, title, release_year, views) 
+   VALUES (1, "Just Dance", 2009, 423);
+INSERT INTO songs (artist_id, title, release_year, views) 
+   VALUES (1, "Million Reasons", 2017, 318);
+INSERT INTO songs (artist_id, title, release_year, views) 
+   VALUES (2, "Summertime Sadness", 2013, 489);
+INSERT INTO songs (artist_id, title, release_year, views) 
+   VALUES (2, "Say Yes To Heaven", 2023, 21);
+INSERT INTO songs (artist_id, title, release_year, views) 
+   VALUES (2, "High By The Beach", 2015, 146);
+INSERT INTO songs (artist_id, title, release_year, views) 
+   VALUES (3, "The Weekend", 2017, 190);
+INSERT INTO songs (artist_id, title, release_year, views) 
+   VALUES (3, "Kill Bill", 2023, 84);
+INSERT INTO songs (artist_id, title, release_year, views) 
+   VALUES (3, "All The Stars", 2018, 421);
+INSERT INTO songs (artist_id, title, release_year, views) 
+   VALUES (4, "Paint The Town Red", 2023, 71);
+INSERT INTO songs (artist_id, title, release_year, views) 
+   VALUES (4, "Women", 2021, 129);
+INSERT INTO songs (artist_id, title, release_year, views) 
+   VALUES (4, "Streets", 2020, 238);
+
+-- Show the artists names
+SELECT * FROM artists;
+
+-- What songs did each artists sing?
+SELECT stage_name, title
+   FROM artists, songs
+   WHERE artists.id = songs.artist_id;
