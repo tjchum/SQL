@@ -46,34 +46,35 @@ INSERT INTO songs (artist_id, title, release_year, views)
 CREATE TABLE albums (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     stage_name TEXT,
-    album_title TEXT,
+    album_name TEXT,
     release_year INTEGER
 );
 
-INSERT INTO albums (stage_name, album_title, release_year)
+INSERT INTO albums (stage_name, album_name, release_year)
     VALUES ("Lady Gaga", "Chromatica", 2020);
-INSERT INTO albums (stage_name, album_title, release_year)
+INSERT INTO albums (stage_name, album_name, release_year)
     VALUES ("Lady Gaga", "The Fame Monster", 2009);
-INSERT INTO albums (stage_name, album_title, release_year)
+INSERT INTO albums (stage_name, album_name, release_year)
     VALUES ("Lady Gaga", "Joanne", 2016);
-INSERT INTO albums (stage_name, album_title, release_year)
+INSERT INTO albums (stage_name, album_name, release_year)
     VALUES ("Lana Del Rey", "Born To Die", 2012);
-INSERT INTO albums (stage_name, album_title, release_year)
+INSERT INTO albums (stage_name, album_name, release_year)
     VALUES ("Lana Del Rey", "Did You Know That There's A Tunnel Under Ocean Blvd", 2023);
-INSERT INTO albums (stage_name, album_title, release_year)
+INSERT INTO albums (stage_name, album_name, release_year)
     VALUES ("Lana Del Rey", "Honeymoon", 2015);
-INSERT INTO albums (stage_name, album_title, release_year)
+INSERT INTO albums (stage_name, album_name, release_year)
     VALUES ("SZA", "Ctrl", 2017);
-INSERT INTO albums (stage_name, album_title, release_year)
+INSERT INTO albums (stage_name, album_name, release_year)
     VALUES ("SZA", "SOS", 2023);
-INSERT INTO albums (stage_name, album_title, release_year)
+INSERT INTO albums (stage_name, album_name, release_year)
     VALUES ("SZA", "", 2018);
-INSERT INTO albums (stage_name, album_title, release_year)
+INSERT INTO albums (stage_name, album_name, release_year)
     VALUES ("Doja Cat", "Scarlet", 2023);
-INSERT INTO albums (stage_name, album_title, release_year)
+INSERT INTO albums (stage_name, album_name, release_year)
     VALUES ("Doja Cat", "Planet Her", 2021);
-INSERT INTO albums (stage_name, album_title, release_year)
+INSERT INTO albums (stage_name, album_name, release_year)
     VALUES ("Doja Cat", "Hot Pink", 2019);
+    
 
 -- Show the artists names
 SELECT * FROM artists;
