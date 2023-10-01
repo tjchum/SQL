@@ -1,13 +1,13 @@
-CREATE TABLE artists (
+CREATE TABLE singers (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
     stage_name TEXT,
     real_name TEXT
 ); 
 
-INSERT INTO artists (stage_name, real_name) VALUES ("Lady Gaga", "Stefani Joanne Angelina Germanotta");
-INSERT INTO artists (stage_name, real_name) VALUES ("Lana Del Rey", "Elizabeth Woolridge Grant");
-INSERT INTO artists (stage_name, real_name) VALUES ("SZA", "Solána Imani Rowe");
-INSERT INTO artists (stage_name, real_name) VALUES ("Doja Cat", "Amala Zandile Dlamini");
+INSERT INTO singers (stage_name, real_name) VALUES ("Lady Gaga", "Stefani Joanne Angelina Germanotta");
+INSERT INTO singers (stage_name, real_name) VALUES ("Lana Del Rey", "Elizabeth Woolridge Grant");
+INSERT INTO singers (stage_name, real_name) VALUES ("SZA", "Solána Imani Rowe");
+INSERT INTO singers (stage_name, real_name) VALUES ("Doja Cat", 
 
 CREATE TABLE songs (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
@@ -77,6 +77,6 @@ INSERT INTO albums (stage_name, album_name, release_year)
     
 
 -- Show the artists names
-SELECT * FROM artists;
+SELECT * FROM singers;
 
 -- What songs did each artists sing?
