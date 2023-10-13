@@ -1,49 +1,37 @@
-CREATE TABLE singers (
-    id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    name TEXT,
-    age INTEGER
-); 
-
-INSERT INTO singers (name, age) VALUES ("Stefani Joanne Angelina Germanotta", 37);
-INSERT INTO singers (name, age) VALUES ("Elizabeth Woolridge Grant", 38);
-INSERT INTO singers (name, age) VALUES ("Solána Imani Rowe", 33);
-INSERT INTO singers (name, age) VALUES ("Amala Zandile Dlamini", 27);
-
 CREATE TABLE songs (
-    id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    artist_id INTEGER,
+    artist_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    name TEXT,
     title TEXT,
-    release_year INTEGER,
-    views NUMERIC
-); 
+    views INTEGER
+);
 
-INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (1, "Rain On Me", 2020, 398);
-INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (1, "Just Dance", 2009, 423);
-INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (1, "Million Reasons", 2016, 318);
-INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (2, "Summertime Sadness", 2012, 489);
-INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (2, "Say Yes To Heaven", 2023, 21);
-INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (2, "High By The Beach", 2015, 146);
-INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (3, "The Weekend", 2017, 190);
-INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (3, "Kill Bill", 2023, 84);
-INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (3, "All The Stars", 2018, 421);
-INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (4, "Paint The Town Red", 2023, 71);
-INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (4, "Women", 2021, 129);
-INSERT INTO songs (artist_id, title, release_year, views) 
-   VALUES (4, "Streets", 2020, 238);
+INSERT INTO songs (name, title, views) 
+   VALUES ("Lady Gaga","Rain On Me", 398);
+INSERT INTO songs (name, title, views) 
+   VALUES ("Lady Gaga", "Just Dance", 423);
+INSERT INTO songs (name, title, views) 
+   VALUES ("Lady Gaga", "Million Reasons", 318);
+INSERT INTO songs (name, title, views) 
+   VALUES ("Lana Del Ray", "Summertime Sadness", 489);
+INSERT INTO songs (name, title, views) 
+   VALUES ("Lana Del Ray", "Say Yes To Heaven", 21);
+INSERT INTO songs (name, title, views) 
+   VALUES ("Lana Del Ray", "High By The Beach", 146);
+INSERT INTO songs (name, title, views) 
+   VALUES ("SZA", "The Weekend", 190);
+INSERT INTO songs (name, title, views) 
+   VALUES ("SZA", "Kill Bill", 84);
+INSERT INTO songs (name, title, views) 
+   VALUES ("SZA", "All The Stars", 421);
+INSERT INTO songs (name, title, views) 
+   VALUES ("Doja Cat", "Paint The Town Red", 71);
+INSERT INTO songs (name, title, views) 
+   VALUES ("Doja Cat", "Women", 129);
+INSERT INTO songs (name, title, views) 
+   VALUES ("Doja Cat", "Streets", 238);
    
 CREATE TABLE albums (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    artist_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     album_name TEXT,
     release_year INTEGER
@@ -74,4 +62,27 @@ INSERT INTO albums (name, album_name, release_year)
 INSERT INTO albums (name, album_name, release_year)
     VALUES ("Doja Cat", "Hot Pink", 2019);
 
--- 
+-- Show the both table being join
+SELECT *
+FROM songs
+JOIN albums
+ON songs.artist_id = albums.artist_id;
+
+-- What were Doja Cat's song views?
+SELECT songs.name, title, views, release_year
+FROM songs
+JOIN albums
+ON songs.artist_id = albums.artist_id
+WHERE songs.name = "Doja Cat";
+
+-- What year had the most released songs?
+SELECT AVG(release_year)
+FROM albums;
+
+-- Who had the most views and what was the song, without Lady Gaga?
+SELECT songs.name, views, title
+FROM songs
+JOIN albums
+ON songs.artist_id = albums.artist_id
+WHERE albums.name <> "Lady Gaga"
+ORDER BY views DESC;
