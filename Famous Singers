@@ -84,5 +84,5 @@ SELECT songs.name, views, title
 FROM songs
 JOIN albums
 ON songs.artist_id = albums.artist_id
-WHERE albums.name <> "Lady Gaga"
+WHERE albums.name <> "Lady Gaga" AND views > 400
 ORDER BY views DESC;
