@@ -58,7 +58,7 @@ SELECT AVG(price),category
 FROM superstore
 WHERE category='Kitchen Supplies';
 
-#Show the sum about the price for items in the category of "Kitcheb Supplies".
+#Show the sum about the price for items in the category of "Kitchen Supplies".
 SELECT SUM(price),category
 FROM superstore
 WHERE category='Kitchen Supplies';
