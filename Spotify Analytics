@@ -32,7 +32,8 @@ FROM BIT_DB.Spotifydata
 GROUP BY artist_name, track_name;
 
 -- Who are the top 10 artists based on popularity?
-SELECT artist_name, popularity
+SELECT artist_name
+, popularity
 FROM BIT_DB.Spotifydata
 ORDER BY popularity desc
 LIMIT 10;
@@ -43,8 +44,46 @@ SELECT artist_name, track_name
 FROM BIT_DB.Spotifydata;
 
 -- What's the average danceability for the 10 most popular songs
-SELECT track_name, avg(danceability)
+SELECT track_name
+, avg(danceability)
 FROM BIT_DB.Spotifydata
 GROUP BY track_name
 ORDER BY popularity desc
 LIMIT 10;
+
+-- How danceability of the song influences its popularity?
+SELECT track_name
+ , artist_name
+ , danceability
+ , popularity
+ FROM BIT_DB.Spotifydata
+ GROUP BY popularity
+ ORDER BY danceability DESC;
+ 
+-- Create a playlist of songs with High danceability and High energy to workout to. 
+SELECT track_name
+ , artist_name
+ , danceability
+ , energy
+FROM BIT_DB.Spotifydata
+WHERE danceability > 0.7
+AND energy > 0.8;
+
+-- What is the average song length by each artist?
+SELECT artist_name
+, AVG(duration_ms) AS avg_duration
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY avg_duration DESC;
+
+-- Label songs by danceablilty using the case funtion.
+SELECT artist_name
+     , track_name
+     , danceability
+,CASE 
+    WHEN danceability >= 0.8 THEN 'High Danceabiliy'
+    WHEN danceability >= 0.5 THEN 'Med Danceability'
+    ELSE 'Low Danceability'
+END AS danceability_level
+FROM BIT_DB.Spotifydata
+ORDER BY danceability_level, artist_name;
