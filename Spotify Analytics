@@ -90,16 +90,15 @@ ORDER BY danceability_level, artist_name;
 
 -- Calculate the average popularity for the artists in the Spotify data table. 
 -- Then, for every artist with an average popularity of 90 or above, show their name, their average popularity, and label them as a “Top Star”.
-WITH avg_popularity_CTE AS (
-SELECT s1.artist_name
-     , AVG(s1.popularity) AS avg_popularity
-FROM Spotifydata s1
-GROUP BY s1.artist_name
+WITH popularity_average_CTE AS (
+SELECT s.artist_name,
+AVG(s.popularity) AS average_popularity
+FROM SpotifyData s 
+GROUP BY s.artist_name
 )
-
-SELECT artist_name 
-     , avg_popularity
-     , 'Top Star' AS tag
-FROM avg_popularity_CTE
-WHERE avg_popularity >= 90.0
-ORDER BY avg_popularity DESC;
+ 
+SELECT  artist_name,
+        average_popularity,
+        'Top Star' AS tag
+FROM popularity_average_CTE
+WHERE average_popularity>=90;
