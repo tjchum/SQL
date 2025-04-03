@@ -83,6 +83,14 @@ SELECT distinct Product, Price
 FROM BIT_DB.FebSales 
 WHERE Price like '%.99';
 
+--List all the products sold in Los Angeles in February, and include how many of each were sold.
+SELECT SUM(Quantity) AS total_sold
+, Product
+FROM BIT_DB.FebSales AS Feb
+WHERE Feb.location LIKE '%Los Angeles%'
+GROUP BY Product
+;
+
 -- Which location in New York received at least 3 orders in Janurary, and how many orders did they each receive?
 SELECT distinct location, count(orderID)
 FROM BIT_DB.JanSales
