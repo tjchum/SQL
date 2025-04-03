@@ -23,28 +23,31 @@ WHERE length(orderid) = 6
 AND orderid <> 'Order ID';
 
 -- Which product was the cheapest one sold in January, and what was the price?
-SELECT product, min(price)
+SELECT product
+, min(price)
 FROM BIT_DB.JanSales Jan
 GROUP BY product, price
 ORDER BY price ASC
 LIMIT 1;
 
 -- What is the total revenue for each product sold in Janurary?
-SELECT SUM(Quantity)*price as revenue, Product
+SELECT SUM(Quantity)*price as revenue AS total_rev
+, Product
 FROM BIT_DB.JanSales
 GROUP BY Product;
 
 -- Which products were sold in Februry at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
-SELECT Product, SUM(Quantity),
-SUM(Quantity)*price as revenue
+SELECT Product
+, SUM(Quantity) AS sold
+, SUM(Quantity)*price as revenue AS total_rev
 FROM BIT_DB.FebSales
 WHERE location = '548 Lincoln St, Seattle, WA 98101'
 GROUP BY Product;
 
 -- How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
 SELECT
-count(distinct cust.acctnum),
-avg(quantity*price)
+count(distinct cust.acctnum) AS cust_order
+, avg(quantity*price) AS avg_sold
 FROM BIT_DB.FebSales Feb
 LEFT JOIN BIT_DB.customers cust
 ON FEB.orderid=cust.order_id
@@ -53,7 +56,8 @@ AND length(orderid) = 6
 AND orderid <> 'Order ID';
 
 -- List all the products sold in Los Angeles in February, and include how many of each were sold.
-SELECT Product, SUM(Quantity)
+SELECT Product
+, SUM(Quantity)
 FROM BIT_DB.FebSales
 WHERE location LIKE '%Los Angeles%'
 GROUP BY Product;
@@ -79,7 +83,8 @@ FROM BIT_DB.FebSales
 WHERE Product like '%Batteries%';
 
 -- List all the products in February that end with 0.99.
-SELECT distinct Product, Price
+SELECT distinct Product
+, Price
 FROM BIT_DB.FebSales 
 WHERE Price like '%.99';
 
@@ -92,7 +97,8 @@ GROUP BY Product
 ;
 
 -- Which location in New York received at least 3 orders in Janurary, and how many orders did they each receive?
-SELECT distinct location, count(orderID)
+SELECT distinct location
+, count(orderID)
 FROM BIT_DB.JanSales
 WHERE location LIKE '%NY%'
 AND LENGTH(orderID) = 6
@@ -107,7 +113,7 @@ WHERE Product LIKE '%Headphones%'
 GROUP BY Product;
 
 -- What was the average amount spent per account in February?
-SELECT sum(Quantity*price)/count(cust.acctnum)
+SELECT sum(Quantity*price)/count(cust.acctnum) AS avg_amt_spent
 FROM BIT_DB.FebSales Feb
 LEFT JOIN BIT_DB.customers cust
 ON Feb.orderID = cust.order_id
@@ -116,7 +122,7 @@ AND orderID <> 'Order ID';
 
 # OR #
 
-SELECT avg(quantity*price)
+SELECT avg(quantity*price) AS avg_amt_spent
 FROM BIT_DB.FebSales Feb
 LEFT JOIN BIT_DB.customers cust
 ON FEB.orderid=cust.order_id
@@ -132,7 +138,8 @@ WHERE length(orderID) = 6
 AND orderID <> 'Order ID';
 
 -- Which product brought in the most revenue in Janurary and how much revenue did it bring in total?
-SELECT Product, SUM(Quantity*price)
+SELECT Product
+, SUM(Quantity*price)
 FROM BIT_DB.JanSales
 GROUP BY Product
 ORDER BY SUM(Quantity*price) desc
